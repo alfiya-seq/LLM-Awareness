@@ -1,0 +1,33 @@
+changed modal -mistral, tinyllama
+sqlite db connetion - chat history, clear chat option added
+
+
+steps
+pip install sqlalchemy
+
+STREAMLIT METHODS
+
+summary table
+| Keyword             | Meaning                                   |
+| ------------------- | ----------------------------------------- |
+| `open("file", "r")` | Open file in read mode                    |
+| `open("file", "w")` | Open in write mode                        |
+| `with ... as ...`   | Context manager – ensures safe open/close |
+| `f.read()`          | Reads file content                        |
+| `f.write("text")`   | Writes text to file                       |
+
+✅ with open(...) as f:
+This is a cleaner and safer way to open files. It automatically:
+Opens the file
+Assigns it to variable f
+Closes it automatically after you're done
+You can think of it like a temporary helper:
+
+“Hey Python, open this file, let me use it as f, and once I’m done, please close it.”
+| Term     | Meaning                                                                 |
+| -------- | ----------------------------------------------------------------------- |
+| `with`   | A keyword that handles setup and cleanup automatically (not a datatype) |
+| Used for | File operations, database connections, locks, etc.                      |
+| Benefits | Cleaner syntax, automatic resource management                           |
+
+
