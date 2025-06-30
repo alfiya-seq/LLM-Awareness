@@ -1,0 +1,65 @@
+Transformers
+
+Hugging Face Transformers is an open-source Python library that gives you:
+Pretrained NLP models (like GPT, BERT, T5, etc.)
+Easy-to-use APIs (pipeline, AutoModel, etc.)
+Tools for natural language processing (NLP) and generation tasks.
+
+It’s the go-to tool if you want to do any of the following:
+
+Summarize documents 📝
+Translate languages 🌍
+Classify text (positive/negative) ☀️/🌧️
+Generate text like ChatGPT 🤖
+Answer questions 📚
+
+Installation
+pip install transformers
+
+🧠 What Is PyTorch?
+PyTorch is a Python library for building and training deep learning models.
+It's built by Facebook AI (now Meta AI), and it’s like a giant LEGO set for neural networks.
+
+🔥 Why Is PyTorch Used in Transformers?
+
+When you run this:
+
+AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")
+
+You’re really loading a PyTorch model — a complex neural network built and trained with PyTorch.
+
+If you don’t have PyTorch installed, Transformers will throw a tantrum like:
+
+“PyTorch not found. I REFUSE to function.”
+
+
+🧩 Core Concepts
+
+1. Models
+These are the pre-trained neural networks, like:
+
+bert-base-uncased (for understanding text)
+t5-small (for translating or summarizing)
+gpt2 (for text generation)
+facebook/bart-large-cnn (for summarization)
+
+They’re trained on massive amounts of data, so you don’t have to.
+
+2. Tokenizers
+Since models can’t read human text (they’re robots, after all), tokenizers convert:
+
+Text → Tokens (numbers)
+Tokens → Text (for output)
+
+Tokenizers are tied to specific models (a BERT tokenizer won't play nicely with GPT-2).
+
+| Auto Class                           | What It Does                        |
+| ------------------------------------ | ----------------------------------- |
+| `AutoTokenizer`                      | Loads the correct tokenizer         |
+| `AutoModel`                          | Loads the base model                |
+| `AutoModelForSeq2SeqLM`              | For tasks like summarization        |
+| `AutoModelForCausalLM`               | For text generation (GPT-style)     |
+| `AutoModelForQuestionAnswering`      | For Q\&A models                     |
+| `AutoModelForSequenceClassification` | For sentiment, spam detection, etc. |
+
+

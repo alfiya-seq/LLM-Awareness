@@ -1,0 +1,7 @@
+**/.venv/
+.venv/
+**/__pycache__/
+**/chat_history.db
+.env
+*.env
+.vscode/
