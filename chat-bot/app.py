@@ -4,7 +4,7 @@ import uuid
 from db import add_message, get_messages, clear_messages
 
 st.set_page_config(page_title="Local LLM Chat", layout="wide")
-st.title(" Local Chat with tinyLLama (Ollama + FastAPI + SQLite)")
+st.title("AI Chatbot")
 
 if "ui_messages" not in st.session_state:              # For adding check for clear chat button
     st.session_state.ui_messages = []
