@@ -1,0 +1,83 @@
+1. Use `feedparser` to get headlines and links from RSS.
+2. Use `newspaper3k` to extract full content from each link.
+3. Feed the content to LLM for summarization.
+
+
+
+✅ feedparser
+→ Reads the RSS feed (XML) from a news site
+→ Gives you: 
+
+        entry.title → Headline
+        entry.link → URL of the article
+        entry.published → Date
+        entry.summary → Teaser (optional)
+
+RSS is like a news bulletin board for the internet.
+Instead of visiting websites to check for new content, RSS lets you subscribe to updates and receive them automatically.
+
+
+
+✅ newspaper3k
+→ Takes the entry.link (the article URL)
+→ Downloads and parses the full article page
+→ Gives you:
+
+        article.text → Full clean content
+        article.title, article.authors, article.publish_date, etc.
+
+
+
+
+✅ Final Recommendation for You:
+| Task                 | Recommended Tool    | Why                             |
+| -------------------- | ------------------- | ------------------------------- |
+| Fetch RSS headlines  | `feedparser`        | Fast, reliable, no setup needed |
+| Extract full content | `newspaper3k`       | Works well for English sites    |
+| Summarize articles   | OpenAI / Ollama LLM | Powerful summarization          |
+
+
+
+✅ Both Comparison:
+| Feature                 | `feedparser`                                 | `newspaper3k`                               |
+| ----------------------- | -------------------------------------------- | ------------------------------------------- |
+| 📌 **Purpose**          | Parse **RSS/Atom feeds** (headlines + links) | Extract **full article content** from a URL |
+| 🌐 **Data Source**      | Feeds like Google News, BBC RSS              | Web article URLs (from any website)         |
+| 🔧 **Use Case**         | Get article metadata from feeds              | Scrape and clean readable article content   |
+| 📝 **Text Extracted**   | Usually just summary or excerpt              | Full main body text (cleaned)               |
+| 🧠 **NLP Support**      | ❌ No NLP features                            | ✅ Summary, keywords, top image, etc.        |
+| 🔄 **Real-time Feed**   | ✅ Yes                                        | ❌ No                                        |
+| 🚀 **Speed**            | Fast (just XML parsing)                      | Slower (downloads full web page)            |
+| 🔗 **Typical Output**   | `title`, `link`, `summary`, `published`      | `title`, `text`, `authors`, `image`, `date` |
+| 🧰 **Depends on HTML?** | ❌ No (uses XML)                              | ✅ Yes                                       |
+
+
+
+
+
+
+🧩 Alternatives to feedparser (for reading RSS/Atom feeds)
+
+| Tool/Library                | Description                                      | Pros                         | Cons                          |
+| --------------------------- | ------------------------------------------------ | ---------------------------- | ----------------------------- |
+| **`xml.etree.ElementTree`** | Built-in XML parser in Python                    | No dependency, low-level     | Manual parsing, verbose       |
+| **`lxml`**                  | Fast and feature-rich XML/HTML parser            | Fast, XPath support          | Heavier, needs C dependencies |
+| **`BeautifulSoup`**         | Flexible parsing (HTML/XML), not RSS-specific    | More control than feedparser | Needs more logic for RSS tags |
+| **`Rfeedparser`**           | Python RSS/Atom parser similar to `feedparser`   | Simple like feedparser       | Smaller community/support     |
+| **`Universal Feed Parser`** | Rebranded `feedparser` maintained by same author | Trusted, maintained          | Same as feedparser            |
+
+
+
+
+
+
+🧩 Alternatives to newspaper3k (for article content extraction)
+
+| Tool/Library                | Description                                        | Pros                                    | Cons                               |
+| --------------------------- | -------------------------------------------------- | --------------------------------------- | ---------------------------------- |
+| **`Goose3`**                | A fork of the original Goose content extractor     | Accurate, simple, faster than newspaper | Sometimes fails on non-English     |
+| **`trafilatura`**           | Fast, modern content extractor (Python)            | Handles paywalls, AMP, non-English well | Needs cleanup for titles sometimes |
+| **`Boilerpipe`**            | Java-based content extractor (used via subprocess) | High accuracy                           | Harder to use in Python            |
+| **`readability-lxml`**      | Python port of Mozilla's readability.js            | Simple, great with `requests`           | Doesn’t extract meta-data          |
+| **`BeautifulSoup`**         | Manual scraping (tag-by-tag)                       | Ultimate control                        | Time-consuming, fragile            |
+| **`selenium`/`playwright`** | Headless browser for JS-heavy pages                | Best for dynamic content                | Slower, resource-heavy             |
