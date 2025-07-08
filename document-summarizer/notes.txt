@@ -62,4 +62,15 @@ Tokenizers are tied to specific models (a BERT tokenizer won't play nicely with 
 | `AutoModelForQuestionAnswering`      | For Q\&A models                     |
 | `AutoModelForSequenceClassification` | For sentiment, spam detection, etc. |
 
+Summary of Flow
+User uploads a PDF
+
+Text is extracted using PyMuPDF
+
+Text is split into chunks
+
+Each chunk is summarized by facebook/bart-large-cnn
+
+The combined summary is displayed
+
 

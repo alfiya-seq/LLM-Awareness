@@ -24,7 +24,7 @@ def extract_text_from_pdf(uploaded_file):
 def chunk_text(text, max_tokens=1024):
     """Split long text into chunks for summarization model."""
     import textwrap
-    return textwrap.wrap(text, width=max_tokens, break_long_words=False)
+    return textwrap.wrap(text, width=max_tokens, break_long_words=False)                   #textwrap.wrap: Breaks the text into chunks without breaking words in the middle (break_long_words=False).
 
 def summarize_text(text, summarizer):
     chunks = chunk_text(text)
