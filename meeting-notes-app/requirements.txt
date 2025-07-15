@@ -1,0 +1,6 @@
+streamlit
+openai
+python-dotenv
+torch
+git+https://github.com/openai/whisper.git
+fpdf

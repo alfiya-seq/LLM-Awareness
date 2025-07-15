@@ -1,0 +1,61 @@
+sudo apt update
+sudo apt install ffmpeg   - for transcripting, dependency
+ Technologies
+
+1.transcripting
+Loads the pretrained Whisper model from disk (or downloads it if not present).
+        1.OpenAI Whisper:
+        A general-purpose speech recognition model released by OpenAI that can transcribe audio into text.
+
+    2. whisper Python Library:
+        A wrapper around the Whisper model that makes transcription very easy to use locally.
+
+    ⚙️ Behind the Scenes: Whisper Processing Pipeline
+        1. Audio Preprocessing
+             Converts MP3/WAV to spectrogram (like an image of sound)
+
+        2.Language Detection
+            Auto-detects the spoken language
+
+        3.Tokenization
+            Breaks audio into smaller segments for the model to handle
+
+        4.Transcription
+            A Transformer-based encoder-decoder model converts sound → words
+
+        5.Output Formatting
+            Returns text, timestamps, and language (you use only ["text"] here)
+
+
+2.Summarization
+    Summarization takes the raw transcript (long, unstructured text) and turns it into:
+
+    ✅ Key discussion points
+    📌 Action items with names and deadlines
+    ❓ Open questions or follow-ups
+
+    This gives you structured, concise notes instead of a wall of text.
+    1. Local LLM — Mistral via Ollama
+        You're using the Mistral language model locally.
+        Mistral is a 7B parameter open-weight model, good for summarization, reasoning, and structured tasks.
+        You access it through an API running locally (via Ollama).
+
+Streamlit:
+1.tempfile
+
+    with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
+        tmp.write(audio_file.read())
+        temp_path = tmp.name
+
+        Takes the uploaded audio file (audio_file.read())
+        Saves it temporarily to disk
+        The path (temp_path) is then used by your Whisper model
+
+2.What is Base64?
+    Base64 is a way of encoding binary data (like images, PDFs, audio) into a text format using only ASCII characters (letters, digits, +, /, =).
+    This is super useful when:
+
+    You need to embed files into HTML, CSS, or Python strings
+    You want to send files over text-based protocols like JSON or HTTP
+    You want to download files via a hyperlink in Streamlit
+    
