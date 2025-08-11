@@ -1,7 +1,7 @@
 from transformers import pipeline
 
 # Load the summarization pipeline once
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
 
 def summarize_with_llm(text: str) -> str:
     """
