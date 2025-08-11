@@ -1,1 +1,53 @@
-Write a Python function that returns True if a given string is a palindrome. Ignore casing and non-alphanumeric characters.
+Write a function that returns true if a given number is prime.
+# app.py
+import streamlit as st
+from agents.code_writer import run_code_writer_agent
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+st.set_page_config(page_title="CodeBot - Multi-Agent System", layout="wide")
+
+# Sidebar
+st.sidebar.title("🛠️ Settings")
+model = st.sidebar.selectbox("Select Model", ["mistral", "llama2"])
+language = st.sidebar.selectbox("Select Language", ["Python", "JavaScript", "Java", "C++"])
+
+if st.sidebar.button("🧹 Clear Conversation"):
+    st.session_state.messages = []
+
+# Chat history initialization
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+st.title("🤖 CodeBot - Chat Interface")
+st.write("Enter your coding task below and let the agents do the work!")
+
+# Chat window
+chat_container = st.container()
+
+# Show past messages
+with chat_container:
+    for msg in st.session_state.messages:
+        role, content = msg["role"], msg["content"]
+        if role == "user":
+            st.chat_message("User").markdown(content)
+        else:
+            st.chat_message("CodeBot").code(content, language=language.lower())
+
+# User input at the bottom
+user_input = st.chat_input("Enter your task here...")
+
+if user_input:
+    # Store user message
+    st.session_state.messages.append({"role": "user", "content": user_input})
+
+    # Call Code Writer agent
+    with st.spinner("CodeBot is thinking..."):
+        response = run_code_writer_agent(user_input)
+
+    # Store assistant response
+    st.session_state.messages.append({"role": "codebot", "content": response})
+
+    # Refresh the page to show new message
+    st.rerun()

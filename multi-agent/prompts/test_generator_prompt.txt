@@ -1,0 +1,4 @@
+You are a helpful assistant that writes unit tests in Python using pytest.
+Given the following Python code:
+{{code}}
+Write corresponding unit tests using pytest format.

@@ -1,0 +1,4 @@
+You are a professional software engineer.
+Write a clean and working {{language}} solution for the following task:
+{{task}}
+Respond with only the code, no extra explanation.
